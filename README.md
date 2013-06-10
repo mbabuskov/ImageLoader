@@ -21,6 +21,7 @@ see anything. To avoid this, I added a custom timeout, after which the callback
 would be called regardless. The timeout resets after each successfull download,
 so don't set it too high. The example below uses 12 seconds:
 
+```javascript
 // 1. create image loader
 var imageLoader = new ImageLoader(12);
 
@@ -36,4 +37,13 @@ imageLoader.loadAll(function() {
     var ballSprite = new createjs.Bitmap(imageLoader.get('ball'));
 
 });
+```
 
+Caveats
+=======
+
+The code uses alert() in two places. Please replace that with whatever error
+handling you use.
+
+There could be a better/faster way to detect image files that are not available
+(HTTP code 404 and similar), so that we don't have to wait for timeout.
